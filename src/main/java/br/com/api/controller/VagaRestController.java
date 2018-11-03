@@ -17,7 +17,7 @@ import br.com.api.model.Vaga;
 import br.com.api.service.VagaService;
 
 @RestController
-public class VagaController {
+public class VagaRestController {
 
 	@Autowired
 	private VagaService vagaService;

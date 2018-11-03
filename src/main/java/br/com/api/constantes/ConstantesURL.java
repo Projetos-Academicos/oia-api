@@ -5,6 +5,8 @@ public class ConstantesURL {
 	// USUARIO
 	public static final String CADASTRAR_USUARIO = "/cadastro-usuario";
 
+	public static final String TESTANDO_API = "/teste";
+
 	// VAGA
 	public static final String CADASTRAR_VAGA = "/admin/cadastro-vaga";
 	public static final String CONSULTAR_VAGA = "/admin/consultar-vaga/{idVaga}";
