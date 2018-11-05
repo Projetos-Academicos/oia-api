@@ -30,7 +30,6 @@ public class Categoria {
 
 	public Categoria() {
 
-
 	}
 	public Categoria(Long id) {
 		this.setId(id);
@@ -38,6 +37,10 @@ public class Categoria {
 	public Categoria(Long id, Boolean ativo) {
 		this.setId(id);
 		this.setAtivo(ativo);
+	}
+	public Categoria(Long id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
 	}
 
 	/*

@@ -92,21 +92,24 @@ public class Vaga {
 	 *  @param orcamento
 	 *  @param prazo
 	 *  @param idCategoria
+	 *  @param nomeCateogria
 	 *  @param idUsuario
+	 *  @param nomeUsuario
 	 */
-	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCategoria, Long idUsuario) {
+	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCategoria, String nomeCateogria, Long idUsuario, String nomeUsuario) {
 		this.setId(id);
 		this.setAtivo(ativo);
 		this.setTitulo(titulo);
 		this.setDescricao(descricao);
 		this.setOrcamento(orcamento);
 		this.setPrazo(prazo);
-		this.setCategoria(new Categoria(idCategoria));
-		this.setUsuarioVaga(new Usuario(idUsuario));
+		this.setCategoria(new Categoria(idCategoria, nomeCateogria));
+		this.setUsuarioVaga(new Usuario(idUsuario, nomeUsuario));
 	}
 
 	/**
-	 * listarVagasAbePorIdUsuario
+	 * listarVagasPorIdUsuario
+	 * consultar
 	 *
 	 *  @param id
 	 *  @param ativo
@@ -116,9 +119,11 @@ public class Vaga {
 	 *  @param prazo
 	 *  @param status
 	 *  @param idCategoria
+	 *  @param nomeCategoria
 	 *  @param idUsuario
+	 *  @param nomeUsuario
 	 */
-	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, StatusVagaEnum status, Long idCategoria, Long idUsuario) {
+	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, StatusVagaEnum status, Long idCategoria, String nomeCategoria, Long idUsuario, String nomeUsuario) {
 		this.setId(id);
 		this.setAtivo(ativo);
 		this.setTitulo(titulo);
@@ -126,8 +131,8 @@ public class Vaga {
 		this.setOrcamento(orcamento);
 		this.setPrazo(prazo);
 		this.setStatusVaga(status);
-		this.setCategoria(new Categoria(idCategoria));
-		this.setUsuarioVaga(new Usuario(idUsuario));
+		this.setCategoria(new Categoria(idCategoria, nomeCategoria));
+		this.setUsuarioVaga(new Usuario(idUsuario, nomeUsuario));
 	}
 
 

@@ -33,6 +33,32 @@ public class Profissao {
 	private Categoria categoria;
 
 	/*
+	 * Construtores
+	 */
+
+	public Profissao() {
+
+	}
+	public Profissao(Long id) {
+		this.setId(id);
+	}
+	public Profissao(Long id, Boolean ativo) {
+		this.setId(id);
+		this.setAtivo(ativo);
+	}
+
+	/**
+	 * listar
+	 *
+	 * @param id
+	 * @param nome
+	 */
+	public Profissao(Long id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
+	}
+
+	/*
 	 * Getter's and Setter's
 	 */
 	public Boolean getAtivo() {

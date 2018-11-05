@@ -2,7 +2,6 @@ package br.com.api.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class VagaRestController {
 	private VagaService vagaService;
 
 	@PostMapping(value = ConstantesURL.CADASTRAR_VAGA)
-	public void cadastrar(@Valid @RequestBody Vaga vaga, HttpServletResponse response) {
+	public void cadastrar(@Valid @RequestBody Vaga vaga) {
 		this.vagaService.salvar(vaga);
 	}
 
@@ -33,7 +32,7 @@ public class VagaRestController {
 	}
 
 	@PostMapping(value = ConstantesURL.INSERIR_CANDIDATO_SELECIONADO)
-	public void inserirCandidatoSelecionado(@PathVariable Long idVaga, @RequestBody Long idUsuario) {
+	public void inserirCandidatoSelecionado(@PathVariable Long idUsuario, @PathVariable Long idVaga) {
 		this.vagaService.inserirUsuarioSelecionado(idVaga, idUsuario);
 	}
 
@@ -45,6 +44,11 @@ public class VagaRestController {
 	@GetMapping(value = ConstantesURL.LISTAR_MINHAS_VAGAS)
 	public List<Vaga> minhasVagas(@PathVariable Long idUsuario){
 		return this.vagaService.listarVagasPorIdUsuario(idUsuario);
+	}
+
+	@PostMapping(value = ConstantesURL.PARTICIPAR_VAGA)
+	public void secandidatar(@PathVariable Long idUsuario, @PathVariable Long idVaga) {
+		this.vagaService.salvarCandidatoNaVaga(idUsuario, idVaga);
 	}
 
 }

@@ -55,10 +55,14 @@ public class Usuario {
 	public Usuario(Long id) {
 		this.setId(id);
 	}
-
 	public Usuario(Long id, Boolean ativo) {
 		this.setId(id);
 		this.setAtivo(ativo);
+	}
+
+	public Usuario(Long id, String nome) {
+		this.setId(id);
+		this.setNome(nome);
 	}
 
 	/*

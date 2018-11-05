@@ -7,19 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.constantes.ConstantesURL;
-import br.com.api.model.Categoria;
-import br.com.api.service.CategoriaService;
+import br.com.api.model.Profissao;
+import br.com.api.service.ProfissaoService;
 
 @RestController
-public class CategoriaRestController {
+public class ProfissaoRestController {
 
 	@Autowired
-	private CategoriaService categoriaService;
+	private ProfissaoService profissaoService;
 
-	@GetMapping(value = ConstantesURL.LISTAR_CATEGORIAS)
-	public List<Categoria> listar(){
-		return this.categoriaService.listar();
+	@GetMapping(value = ConstantesURL.LISTAR_PROFISSAO)
+	public List<Profissao> listar(){
+		return this.profissaoService.listar();
 	}
-
-
 }

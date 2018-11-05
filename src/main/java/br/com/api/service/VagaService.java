@@ -1,5 +1,6 @@
 package br.com.api.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +29,26 @@ public class VagaService {
 		this.salvar(vaga);
 	}
 
-
 	public List<Vaga> listarVagasAbertasParaCandidatos(Long idUsuario){
 		return this.vagaRepository.listarVagasAbertasParaCandidatos(idUsuario);
 	}
+
 
 	public List<Vaga> listarVagasPorIdUsuario(Long idUsuario){
 		return this.vagaRepository.listarVagasPorIdUsuario(idUsuario);
 	}
 
-
 	public void salvar(Vaga vaga) {
 		this.vagaRepository.save(vaga);
+	}
+
+
+	public void salvarCandidatoNaVaga(Long idUsuario, Long idVaga) {
+		Vaga vaga = this.consultar(idVaga);
+		List<Usuario> candidato = new ArrayList<>();
+		candidato.add(new Usuario(idUsuario));
+		vaga.setUsuarioCandidatos(candidato);
+
+		this.salvar(vaga);
 	}
 }
