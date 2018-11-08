@@ -10,6 +10,7 @@ public class ConstantesURL {
 	//CARREGAR LISTAS
 	public static final String LISTAR_CATEGORIAS = "/admin/listar-categorias";
 	public static final String LISTAR_PROFISSAO = "/admin/listar-profissao";
+	public static final String LISTAR_CIDADES = "/admin/listar-cidades";
 
 	// VAGA
 	public static final String CADASTRAR_VAGA = "/admin/cadastro-vaga";
