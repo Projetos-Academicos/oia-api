@@ -49,32 +49,36 @@ public class Cidade {
 	/*
 	 * Getter's and Setter's
 	 */
+
+	public Boolean getAtivo() {
+		if(this.ativo == null) {
+			this.ativo = true;
+		}
+		return this.ativo;
+	}
+
 	public String getEstado() {
 		return this.estado;
 	}
-
 	public Long getId() {
 		return this.id;
 	}
 	public String getNome() {
 		return this.nome;
 	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Boolean getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
 	}
 
 }
