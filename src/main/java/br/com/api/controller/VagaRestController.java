@@ -22,8 +22,9 @@ public class VagaRestController {
 	private VagaService vagaService;
 
 	@PostMapping(value = ConstantesURL.CADASTRAR_VAGA)
-	public void cadastrar(@Valid @RequestBody Vaga vaga) {
+	public String cadastrar(@Valid @RequestBody Vaga vaga) {
 		this.vagaService.salvar(vaga);
+		return "VAGA CRIADA COM SUCESSO!";
 	}
 
 	@GetMapping(value = ConstantesURL.CONSULTAR_VAGA)
