@@ -53,6 +53,11 @@ public class Vaga {
 
 	@NotNull
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "cidade_id")
+	private Cidade cidade;
+
+	@NotNull
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
@@ -84,6 +89,7 @@ public class Vaga {
 
 	/**
 	 * listarVagasAbertasParaCandidatos
+	 * consultar
 	 *
 	 *  @param id
 	 *  @param ativo
@@ -91,18 +97,22 @@ public class Vaga {
 	 *  @param descricao
 	 *  @param orcamento
 	 *  @param prazo
+	 *  @param idCidade
+	 *  @param nomeCidade
+	 *  @param estado
 	 *  @param idCategoria
 	 *  @param nomeCateogria
 	 *  @param idUsuario
 	 *  @param nomeUsuario
 	 */
-	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCategoria, String nomeCateogria, Long idUsuario, String nomeUsuario) {
+	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCidade, String nomeCidade, String estado, Long idCategoria, String nomeCateogria, Long idUsuario, String nomeUsuario) {
 		this.setId(id);
 		this.setAtivo(ativo);
 		this.setTitulo(titulo);
 		this.setDescricao(descricao);
 		this.setOrcamento(orcamento);
 		this.setPrazo(prazo);
+		this.setCidade(new Cidade(idCidade, nomeCidade, estado));
 		this.setCategoria(new Categoria(idCategoria, nomeCateogria));
 		this.setUsuarioVaga(new Usuario(idUsuario, nomeUsuario));
 	}
@@ -117,19 +127,23 @@ public class Vaga {
 	 *  @param descricao
 	 *  @param orcamento
 	 *  @param prazo
+	 *  @param idCidade
+	 *  @param nomeCidade
+	 *  @param estado
 	 *  @param status
 	 *  @param idCategoria
 	 *  @param nomeCategoria
 	 *  @param idUsuario
 	 *  @param nomeUsuario
 	 */
-	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, StatusVagaEnum status, Long idCategoria, String nomeCategoria, Long idUsuario, String nomeUsuario) {
+	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCidade, String nomeCidade, String estado, StatusVagaEnum status, Long idCategoria, String nomeCategoria, Long idUsuario, String nomeUsuario) {
 		this.setId(id);
 		this.setAtivo(ativo);
 		this.setTitulo(titulo);
 		this.setDescricao(descricao);
 		this.setOrcamento(orcamento);
 		this.setPrazo(prazo);
+		this.setCidade(new Cidade(idCidade, nomeCidade, estado));
 		this.setStatusVaga(status);
 		this.setCategoria(new Categoria(idCategoria, nomeCategoria));
 		this.setUsuarioVaga(new Usuario(idUsuario, nomeUsuario));
@@ -148,6 +162,9 @@ public class Vaga {
 	}
 	public Categoria getCategoria() {
 		return this.categoria;
+	}
+	public Cidade getCidade() {
+		return this.cidade;
 	}
 	public String getDescricao() {
 		return this.descricao;
@@ -182,6 +199,9 @@ public class Vaga {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
@@ -203,9 +223,11 @@ public class Vaga {
 	public void setUsuarioCandidatos(List<Usuario> usuarioCandidatos) {
 		this.usuarioCandidatos = usuarioCandidatos;
 	}
+
 	public void setUsuarioCandidatoSelecionado(Usuario usuarioCandidatoSelecionado) {
 		this.usuarioCandidatoSelecionado = usuarioCandidatoSelecionado;
 	}
+
 	public void setUsuarioVaga(Usuario usuarioVaga) {
 		this.usuarioVaga = usuarioVaga;
 	}
