@@ -1,5 +1,7 @@
 package br.com.api.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -19,7 +23,6 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
 	@Column(name = "ativo")
 	private Boolean ativo;
 
@@ -43,6 +46,10 @@ public class Usuario {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "profissao_id")
 	private Profissao profissao;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "usuario_permissao", joinColumns = {@JoinColumn(name = "usuario_id") }, inverseJoinColumns = {@JoinColumn(name = "permissao_id") })
+	private List<Permissao> permissoes;
 
 	/*
 	 * Construtores
@@ -86,6 +93,9 @@ public class Usuario {
 	public String getNome() {
 		return this.nome;
 	}
+	public List<Permissao> getPermissoes() {
+		return this.permissoes;
+	}
 	public Profissao getProfissao() {
 		return this.profissao;
 	}
@@ -107,9 +117,14 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+
 	public void setProfissao(Profissao profissao) {
 		this.profissao = profissao;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
