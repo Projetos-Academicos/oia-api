@@ -2,12 +2,11 @@ package br.com.api.constantes;
 
 public class ConstantesURL {
 
-	// USUARIO
+	// ROTAS LIBERADAS
 	public static final String CADASTRAR_USUARIO = "/cadastro-usuario";
+	public static final String REALIZAR_LOGIN = "/login";
 
-	public static final String TESTANDO_API = "/teste";
-
-	//CARREGAR LISTAS
+	// CARREGAR LISTAS
 	public static final String LISTAR_CATEGORIAS = "/admin/listar-categorias";
 	public static final String LISTAR_PROFISSAO = "/admin/listar-profissao";
 	public static final String LISTAR_CIDADES = "/admin/listar-cidades";

@@ -18,18 +18,17 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import br.com.api.enums.StatusVagaEnum;
+import br.com.api.model.arquitetura.Model;
 
 @Entity
 @Table(name = "vaga")
-public class Vaga {
+public class Vaga extends Model<Long> {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotNull
-	@Column(name = "ativo")
-	private Boolean ativo;
 
 	@NotNull
 	@Column(name = "titulo")
@@ -82,7 +81,7 @@ public class Vaga {
 
 	}
 
-	public Vaga(Long id, Boolean ativo) {
+	public Vaga(Long id, boolean ativo) {
 		this.setId(id);
 		this.setAtivo(ativo);
 	}
@@ -105,7 +104,7 @@ public class Vaga {
 	 *  @param idUsuario
 	 *  @param nomeUsuario
 	 */
-	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCidade, String nomeCidade, String estado, Long idCategoria, String nomeCateogria, Long idUsuario, String nomeUsuario) {
+	public Vaga(Long id, boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCidade, String nomeCidade, String estado, Long idCategoria, String nomeCateogria, Long idUsuario, String nomeUsuario) {
 		this.setId(id);
 		this.setAtivo(ativo);
 		this.setTitulo(titulo);
@@ -136,7 +135,7 @@ public class Vaga {
 	 *  @param idUsuario
 	 *  @param nomeUsuario
 	 */
-	public Vaga(Long id, Boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCidade, String nomeCidade, String estado, StatusVagaEnum status, Long idCategoria, String nomeCategoria, Long idUsuario, String nomeUsuario) {
+	public Vaga(Long id, boolean ativo, String titulo, String descricao, Long orcamento, Integer prazo, Long idCidade, String nomeCidade, String estado, StatusVagaEnum status, Long idCategoria, String nomeCategoria, Long idUsuario, String nomeUsuario) {
 		this.setId(id);
 		this.setAtivo(ativo);
 		this.setTitulo(titulo);
@@ -154,12 +153,6 @@ public class Vaga {
 	 *	Getter's and Setter's
 	 */
 
-	public Boolean getAtivo() {
-		if(this.ativo == null) {
-			this.ativo = true;
-		}
-		return this.ativo;
-	}
 	public Categoria getCategoria() {
 		return this.categoria;
 	}
@@ -169,6 +162,7 @@ public class Vaga {
 	public String getDescricao() {
 		return this.descricao;
 	}
+	@Override
 	public Long getId() {
 		return this.id;
 	}
@@ -193,9 +187,6 @@ public class Vaga {
 	public Usuario getUsuarioVaga() {
 		return this.usuarioVaga;
 	}
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
@@ -205,6 +196,7 @@ public class Vaga {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

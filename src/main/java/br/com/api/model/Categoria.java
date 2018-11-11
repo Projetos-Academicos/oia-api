@@ -8,17 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.api.model.arquitetura.Model;
+
 @Entity
 @Table(name = "categoria")
-public class Categoria {
+public class Categoria extends Model<Long> {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotNull
-	@Column(name = "ativo")
-	private Boolean ativo;
 
 	@NotNull
 	@Column(name = "nome")
@@ -47,13 +47,7 @@ public class Categoria {
 	 * Getter's and Setter's
 	 */
 
-	public Boolean getAtivo() {
-		if(this.ativo == null) {
-			this.ativo = true;
-		}
-		return this.ativo;
-	}
-
+	@Override
 	public Long getId() {
 		return this.id;
 	}
@@ -62,10 +56,7 @@ public class Categoria {
 		return this.nome;
 	}
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
-
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

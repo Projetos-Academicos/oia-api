@@ -4,12 +4,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.constantes.ConstantesURL;
+import br.com.api.exception.ExceptionGeral;
 import br.com.api.model.Usuario;
 import br.com.api.service.UsuarioService;
 
@@ -20,13 +20,9 @@ public class UsuarioRestController {
 	private UsuarioService usuarioService;
 
 	@PostMapping(value = ConstantesURL.CADASTRAR_USUARIO)
-	public void cadastrar(@Valid @RequestBody Usuario usuario, HttpServletResponse response) {
+	public String cadastrar(@Valid @RequestBody Usuario usuario, HttpServletResponse response) throws ExceptionGeral {
 		this.usuarioService.salvar(usuario);
-	}
-
-	@GetMapping(value = ConstantesURL.TESTANDO_API)
-	public String testando() {
-		return "BEM VINDO A API, ESTAMOS ONLINE E OPERANDO";
+		return "USUARIO CADASTRADO COM SUCESSO";
 	}
 
 }

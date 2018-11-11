@@ -8,9 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.api.model.arquitetura.Model;
+
 @Entity
 @Table(name = "permissao")
-public class Permissao {
+public class Permissao extends Model<Long> {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,12 +30,14 @@ public class Permissao {
 	public String getDescricao() {
 		return this.descricao;
 	}
+	@Override
 	public Long getId() {
 		return this.id;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

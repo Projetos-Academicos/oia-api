@@ -7,13 +7,19 @@ import br.com.api.model.Permissao;
 import br.com.api.repository.PermissaoRepository;
 
 @Service
-public class PermissaoService {
+public class PermissaoService extends ServiceGeneric<Permissao, Long, PermissaoRepository> {
 
 	@Autowired
 	private PermissaoRepository permissaoRepository;
 
-	public void salvar(Permissao permissao) {
-		this.permissaoRepository.save(permissao);
+	@Override
+	public PermissaoRepository getRepositorio() {
+		return this.permissaoRepository;
+	}
+
+	@Override
+	Permissao persistirEntidade(Permissao model) {
+		return this.permissaoRepository.save(model);
 	}
 
 }

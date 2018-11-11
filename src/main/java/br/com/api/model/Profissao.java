@@ -11,17 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.api.model.arquitetura.Model;
+
 @Entity
 @Table(name = "profissao")
-public class Profissao {
+public class Profissao extends Model<Long>{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotNull
-	@Column(name = "ativo")
-	private Boolean ativo;
 
 	@NotNull
 	@Column(name = "nome")
@@ -61,17 +61,11 @@ public class Profissao {
 	/*
 	 * Getter's and Setter's
 	 */
-	public Boolean getAtivo() {
-		if (this.ativo == null) {
-			this.ativo = true;
-		}
-		return this.ativo;
-	}
-
 	public Categoria getCategoria() {
 		return this.categoria;
 	}
 
+	@Override
 	public Long getId() {
 		return this.id;
 	}
@@ -80,14 +74,11 @@ public class Profissao {
 		return this.nome;
 	}
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
-
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

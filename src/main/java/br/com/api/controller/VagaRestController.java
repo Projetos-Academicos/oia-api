@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.constantes.ConstantesURL;
+import br.com.api.exception.ExceptionGeral;
 import br.com.api.model.Vaga;
 import br.com.api.service.VagaService;
 
@@ -22,7 +23,7 @@ public class VagaRestController {
 	private VagaService vagaService;
 
 	@PostMapping(value = ConstantesURL.CADASTRAR_VAGA)
-	public String cadastrar(@Valid @RequestBody Vaga vaga) {
+	public String cadastrar(@Valid @RequestBody Vaga vaga) throws ExceptionGeral {
 		this.vagaService.salvar(vaga);
 		return "VAGA CRIADA COM SUCESSO!";
 	}
@@ -33,7 +34,7 @@ public class VagaRestController {
 	}
 
 	@PostMapping(value = ConstantesURL.INSERIR_CANDIDATO_SELECIONADO)
-	public void inserirCandidatoSelecionado(@PathVariable Long idUsuario, @PathVariable Long idVaga) {
+	public void inserirCandidatoSelecionado(@PathVariable Long idUsuario, @PathVariable Long idVaga) throws ExceptionGeral {
 		this.vagaService.inserirUsuarioSelecionado(idVaga, idUsuario);
 	}
 
@@ -48,7 +49,7 @@ public class VagaRestController {
 	}
 
 	@PostMapping(value = ConstantesURL.PARTICIPAR_VAGA)
-	public void secandidatar(@PathVariable Long idUsuario, @PathVariable Long idVaga) {
+	public void secandidatar(@PathVariable Long idUsuario, @PathVariable Long idVaga) throws ExceptionGeral {
 		this.vagaService.salvarCandidatoNaVaga(idUsuario, idVaga);
 	}
 

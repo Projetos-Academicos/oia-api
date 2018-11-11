@@ -15,16 +15,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.api.model.arquitetura.Model;
+
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario extends Model<Long>{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(name = "ativo")
-	private Boolean ativo;
 
 	@NotNull
 	@Column(name = "login")
@@ -75,15 +76,11 @@ public class Usuario {
 	/*
 	 * Getter's and Setter's
 	 */
-	public Boolean getAtivo() {
-		if(this.ativo == null) {
-			this.ativo = true;
-		}
-		return this.ativo;
-	}
 	public String getContato() {
 		return this.contato;
 	}
+
+	@Override
 	public Long getId() {
 		return this.id;
 	}
@@ -102,12 +99,10 @@ public class Usuario {
 	public String getSenha() {
 		return this.senha;
 	}
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
 	public void setContato(String contato) {
 		this.contato = contato;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

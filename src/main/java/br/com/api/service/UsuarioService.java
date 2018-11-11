@@ -3,24 +3,31 @@ package br.com.api.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.api.exception.ExceptionGeral;
 import br.com.api.model.Usuario;
 import br.com.api.repository.UsuarioRepository;
 import br.com.api.util.Utils;
 
 @Service
-public class UsuarioService {
+public class UsuarioService extends ServiceGeneric<Usuario, Long, UsuarioRepository>{
 
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	public Usuario consultar(Long id) {
-		return this.usuarioRepository.findOne(id);
+	@Override
+	public UsuarioRepository getRepositorio() {
+		return this.usuarioRepository;
 	}
 
-	public void salvar(Usuario usuario) {
-		String senhaEncodada = Utils.encodarSenha(usuario.getSenha());
-		usuario.setSenha(senhaEncodada);
-		this.usuarioRepository.save(usuario);
+	@Override
+	Usuario persistirEntidade(Usuario model) {
+		return this.usuarioRepository.save(model);
+	}
+
+	@Override
+	public void validarInclusao(Usuario model) throws ExceptionGeral {
+		String senhaEncodada = Utils.encodarSenha(model.getSenha());
+		model.setSenha(senhaEncodada);
 	}
 }
