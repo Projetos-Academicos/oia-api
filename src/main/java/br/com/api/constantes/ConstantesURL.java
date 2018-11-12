@@ -17,7 +17,11 @@ public class ConstantesURL {
 	public static final String PARTICIPAR_VAGA = "/admin/candidatar-se/{idUsuario}/{idVaga}";
 	public static final String LISTAR_MINHAS_VAGAS = "/admin/minhas-vagas/{idUsuario}";
 	public static final String INSERIR_CANDIDATO_SELECIONADO = "/admin/selecionar-candidato/{idUsuario}/{idVaga}";
+	public static final String LISTAR_CANDIDATOS_VAGA = "/admin/listar-candidatos/{idVaga}";
 	public static final String LISTAR_VAGAS = "/admin/listar-vagas/{idUsuario}";
+
+	// USUARIO
+	public static final String CONSULTAR_USUARIO = "/admin/consultar-usuario/{id}";
 
 
 }

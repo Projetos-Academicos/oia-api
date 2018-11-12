@@ -41,7 +41,7 @@ public class SpringAuth extends AuthorizationServerConfigurerAdapter {
 		.secret("teste123")
 		.scopes("read", "write")
 		.authorizedGrantTypes("password", "refresh_token")
-		.accessTokenValiditySeconds(60)
+		.accessTokenValiditySeconds(3600 * 24)
 		.refreshTokenValiditySeconds(3600 * 24);
 
 	}

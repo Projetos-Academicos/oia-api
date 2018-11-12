@@ -1,7 +1,5 @@
 package br.com.api.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -44,13 +40,13 @@ public class Usuario extends Model<Long>{
 	private String contato;
 
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "profissao_id")
 	private Profissao profissao;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "usuario_permissao", joinColumns = {@JoinColumn(name = "usuario_id") }, inverseJoinColumns = {@JoinColumn(name = "permissao_id") })
-	private List<Permissao> permissoes;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "perfil_id")
+	private Perfil perfil;
 
 	/*
 	 * Construtores
@@ -90,8 +86,8 @@ public class Usuario extends Model<Long>{
 	public String getNome() {
 		return this.nome;
 	}
-	public List<Permissao> getPermissoes() {
-		return this.permissoes;
+	public Perfil getPerfil() {
+		return this.perfil;
 	}
 	public Profissao getProfissao() {
 		return this.profissao;
@@ -112,8 +108,9 @@ public class Usuario extends Model<Long>{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public void setPermissoes(List<Permissao> permissoes) {
-		this.permissoes = permissoes;
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	public void setProfissao(Profissao profissao) {

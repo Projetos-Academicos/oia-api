@@ -1,5 +1,7 @@
 package br.com.api.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,15 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import br.com.api.model.arquitetura.Model;
 
 @Entity
-@Table(name = "profissao")
-public class Profissao extends Model<Long>{
+@Table(name = "perfil")
+public class Perfil extends Model<Long>{
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,44 +30,25 @@ public class Profissao extends Model<Long>{
 	@Column(name = "nome")
 	private String nome;
 
-	@NotNull
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "categoria_id")
-	private Categoria categoria;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "perfil_permissao", joinColumns = {@JoinColumn(name = "perfil_id") }, inverseJoinColumns = {@JoinColumn(name = "permissao_id") })
+	private List<Permissao> permissoes;
 
 	/*
 	 * Construtores
 	 */
 
-	public Profissao() {
+	public Perfil() {
 
 	}
-	public Profissao(Long id) {
-		this.setId(id);
-	}
-	public Profissao(Long id, Boolean ativo) {
-		this.setId(id);
-		this.setAtivo(ativo);
-	}
 
-	/**
-	 * listar
-	 *
-	 * @param id
-	 * @param nome
-	 */
-	public Profissao(Long id, String nome) {
+	public Perfil(Long id) {
 		this.setId(id);
-		this.setNome(nome);
 	}
 
 	/*
 	 * Getter's and Setter's
 	 */
-	public Categoria getCategoria() {
-		return this.categoria;
-	}
-
 	@Override
 	public Long getId() {
 		return this.id;
@@ -74,8 +58,8 @@ public class Profissao extends Model<Long>{
 		return this.nome;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public List<Permissao> getPermissoes() {
+		return this.permissoes;
 	}
 
 	@Override
@@ -86,4 +70,9 @@ public class Profissao extends Model<Long>{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+
 }

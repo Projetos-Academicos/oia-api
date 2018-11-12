@@ -51,25 +51,25 @@ public class Vaga extends Model<Long> {
 	private StatusVagaEnum statusVaga;
 
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
 
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "usuario_vaga_id")
 	private Usuario usuarioVaga;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "usuario_candidato_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "usuario_selecionado_id")
 	private Usuario usuarioCandidatoSelecionado;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "candidatos_vagas", joinColumns = {@JoinColumn(name = "candidato_id") }, inverseJoinColumns = {@JoinColumn(name = "vaga_id") })
 	private List<Usuario> usuarioCandidatos;
 
