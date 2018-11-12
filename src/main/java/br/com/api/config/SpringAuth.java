@@ -22,7 +22,7 @@ public class SpringAuth extends AuthorizationServerConfigurerAdapter {
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
-		accessTokenConverter.setSigningKey("teste");
+		accessTokenConverter.setSigningKey("api");
 		return accessTokenConverter;
 	}
 
@@ -37,11 +37,11 @@ public class SpringAuth extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
-		.withClient("teste")
-		.secret("teste123")
+		.withClient("mobile")
+		.secret("m0b1l3")
 		.scopes("read", "write")
 		.authorizedGrantTypes("password", "refresh_token")
-		.accessTokenValiditySeconds(3600 * 24)
+		.accessTokenValiditySeconds(180)
 		.refreshTokenValiditySeconds(3600 * 24);
 
 	}
