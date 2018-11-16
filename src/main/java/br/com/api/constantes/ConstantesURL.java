@@ -6,6 +6,8 @@ public class ConstantesURL {
 	public static final String CADASTRAR_USUARIO = "/cadastro-usuario";
 	public static final String REALIZAR_LOGIN = "/login";
 
+	public static final String REALIZAR_LOGOUT = "/admin/logout";
+
 	// CARREGAR LISTAS
 	public static final String LISTAR_CATEGORIAS = "/admin/listar-categorias";
 	public static final String LISTAR_PROFISSAO = "/admin/listar-profissao";
