@@ -1,4 +1,4 @@
-package br.com.api.wrapper;
+/*package br.com.api.wrapper;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 
 import org.apache.catalina.util.ParameterMap;
 
-public class ServletRequestWrapper extends HttpServletRequestWrapper{
+public class ServletRequestWrapper extends HttpServletRequestWrapper{ // USADO NO PROCESSO DE COLOCAR O TOKEN E PEGAR O TOKEN DO COOKIE
 
 	private String refreshToken;
 
@@ -25,3 +25,4 @@ public class ServletRequestWrapper extends HttpServletRequestWrapper{
 	}
 
 }
+ */

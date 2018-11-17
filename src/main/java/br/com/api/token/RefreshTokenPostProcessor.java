@@ -1,4 +1,4 @@
-package br.com.api.token;
+/*package br.com.api.token;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @ControllerAdvice
-public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
+public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> { // USADO NO PROCESSO DE COLOCAR O TOKEN E PEGAR O TOKEN DO COOKIE
 
 	private void adicionarRefreshTokenNoCookie(String refreshToken, HttpServletRequest req, HttpServletResponse resp) {
 		Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
@@ -56,3 +56,4 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 	}
 
 }
+ */

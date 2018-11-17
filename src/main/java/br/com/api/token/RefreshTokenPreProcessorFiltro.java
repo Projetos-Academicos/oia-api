@@ -1,4 +1,4 @@
-package br.com.api.token;
+/*package br.com.api.token;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ import br.com.api.wrapper.ServletRequestWrapper;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class RefreshTokenPreProcessorFiltro implements Filter {
+public class RefreshTokenPreProcessorFiltro implements Filter { // USADO NO PROCESSO DE COLOCAR O TOKEN E PEGAR O TOKEN DO COOKIE
 
 
 	@Override
@@ -49,3 +49,4 @@ public class RefreshTokenPreProcessorFiltro implements Filter {
 	}
 
 }
+ */
