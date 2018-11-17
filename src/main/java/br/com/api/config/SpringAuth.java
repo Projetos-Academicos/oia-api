@@ -35,7 +35,7 @@ public class SpringAuth extends AuthorizationServerConfigurerAdapter {
 	}
 
 	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception { // TODO
 		clients.inMemory()
 		.withClient("mobile")
 		.secret("m0b1l3")
