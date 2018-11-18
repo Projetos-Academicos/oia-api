@@ -17,7 +17,7 @@ import br.com.api.model.Usuario;
 import br.com.api.repository.UsuarioRepository;
 
 @Service
-public class AppUserDetailService implements UserDetailsService{
+public class UserDetailService implements UserDetailsService{
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -31,10 +31,10 @@ public class AppUserDetailService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		Optional<Usuario> usuarioOptional = this.usuarioRepository.findByLogin(login);
+		Optional<Usuario> usuarioOptional = this.usuarioRepository.findByAtivoAndLogin(true, login);
 
 		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorretos"));
-		return new UsuarioSistema(usuario, this.getPermissoes(usuario));
+		return new UserDetail(usuario, this.getPermissoes(usuario));
 	}
 
 }

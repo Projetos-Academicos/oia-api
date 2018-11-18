@@ -7,13 +7,13 @@ import org.springframework.security.core.userdetails.User;
 
 import br.com.api.model.Usuario;
 
-public class UsuarioSistema extends User{
+public class UserDetail extends User{
 
 	private static final long serialVersionUID = 1L;
 
 	private Usuario usuario;
 
-	public UsuarioSistema(Usuario usuario, Collection<? extends GrantedAuthority> authorities) {
+	public UserDetail(Usuario usuario, Collection<? extends GrantedAuthority> authorities) {
 		super(usuario.getLogin(), usuario.getSenha(), authorities);
 		this.usuario = usuario;
 	}

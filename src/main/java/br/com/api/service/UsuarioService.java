@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.api.constantes.ConstantesMessage;
 import br.com.api.exception.ExceptionGeral;
 import br.com.api.model.Usuario;
 import br.com.api.model.Vaga;
@@ -14,7 +15,7 @@ import br.com.api.repository.VagaRepository;
 import br.com.api.util.Utils;
 
 @Service
-public class UsuarioService extends ServiceGeneric<Usuario, Long, UsuarioRepository>{
+public class UsuarioService extends ServiceGenerico<Usuario, Long, UsuarioRepository>{
 
 
 	@Autowired
@@ -22,6 +23,18 @@ public class UsuarioService extends ServiceGeneric<Usuario, Long, UsuarioReposit
 
 	@Autowired
 	private VagaRepository vagaRepository;
+
+	public Usuario consultaSimplesPorId(Long id) {
+		return this.usuarioRepository.consultaSimplesPorId(id);
+	}
+
+	public Usuario consultaSimplesPorLogin(String login) {
+		return this.usuarioRepository.consultaSimplesPorLogin(login);
+	}
+
+	public Long countByLogin(String login) {
+		return this.usuarioRepository.countByLogin(login);
+	}
 
 	@Override
 	public UsuarioRepository getRepositorio() {
@@ -46,5 +59,16 @@ public class UsuarioService extends ServiceGeneric<Usuario, Long, UsuarioReposit
 	public void validarInclusao(Usuario model) throws ExceptionGeral {
 		String senhaEncodada = Utils.encodarSenha(model.getSenha());
 		model.setSenha(senhaEncodada);
+	}
+
+	@Override
+	public void validarUnicidade(Usuario model) throws ExceptionGeral {
+		Long count = this.countByLogin(model.getLogin());
+		if(count > 0 && model.getId() != null) {
+			Usuario usuarioAux = this.consultaSimplesPorId(model.getId());
+			if(!usuarioAux.getId().equals(model.getId())) {
+				throw new ExceptionGeral(this.getMensagem(ConstantesMessage.ERRO_UNICIDADE_LOGIN_USUARIO));
+			}
+		}
 	}
 }

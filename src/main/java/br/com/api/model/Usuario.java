@@ -69,6 +69,12 @@ public class Usuario extends Model<Long>{
 		this.setNome(nome);
 	}
 
+	public Usuario(Long id, String nome, String login) {
+		this.setId(id);
+		this.setNome(nome);
+		this.setLogin(login);
+	}
+
 	/*
 	 * Getter's and Setter's
 	 */

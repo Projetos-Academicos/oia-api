@@ -60,7 +60,7 @@ public class Vaga extends Model<Long> {
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
-	@NotNull
+
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "usuario_vaga_id")
 	private Usuario usuarioVaga;

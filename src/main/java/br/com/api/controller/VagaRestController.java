@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.constantes.Constantes;
+import br.com.api.constantes.ConstantesMessage;
 import br.com.api.constantes.ConstantesURL;
 import br.com.api.exception.ExceptionGeral;
 import br.com.api.model.Vaga;
@@ -27,8 +28,9 @@ public class VagaRestController {
 	@PreAuthorize(Constantes.PERMISSAO + "('" + Constantes.CADASTRAR_VAGA +"')")
 	@PostMapping(value = ConstantesURL.CADASTRAR_VAGA)
 	public String cadastrar(@Valid @RequestBody Vaga vaga) throws ExceptionGeral {
+
 		this.vagaService.salvar(vaga);
-		return "VAGA CRIADA COM SUCESSO!";
+		return ConstantesMessage.OPERACAO_REALIZADA_SUCESSO;
 	}
 
 	@PreAuthorize(Constantes.PERMISSAO + "('" + Constantes.CONSULTAR_VAGA +"')")

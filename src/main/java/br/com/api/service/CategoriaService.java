@@ -7,7 +7,7 @@ import br.com.api.model.Categoria;
 import br.com.api.repository.CategoriaRepository;
 
 @Service
-public class CategoriaService extends ServiceGeneric<Categoria, Long, CategoriaRepository> {
+public class CategoriaService extends ServiceGenerico<Categoria, Long, CategoriaRepository> {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;

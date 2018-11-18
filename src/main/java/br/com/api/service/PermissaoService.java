@@ -7,7 +7,7 @@ import br.com.api.model.Permissao;
 import br.com.api.repository.PermissaoRepository;
 
 @Service
-public class PermissaoService extends ServiceGeneric<Permissao, Long, PermissaoRepository> {
+public class PermissaoService extends ServiceGenerico<Permissao, Long, PermissaoRepository> {
 
 	@Autowired
 	private PermissaoRepository permissaoRepository;

@@ -7,7 +7,7 @@ import br.com.api.model.Cidade;
 import br.com.api.repository.CidadeRepository;
 
 @Service
-public class CidadeService extends ServiceGeneric<Cidade, Long, CidadeRepository> {
+public class CidadeService extends ServiceGenerico<Cidade, Long, CidadeRepository> {
 
 	@Autowired
 	private CidadeRepository cidadeRepositoy;

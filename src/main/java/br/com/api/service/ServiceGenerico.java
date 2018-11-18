@@ -17,9 +17,9 @@ import br.com.api.exception.ExceptionGeral;
 import br.com.api.model.arquitetura.Model;
 import br.com.api.repository.arquitetura.RepositorioGenerico;
 
-public abstract class ServiceGeneric<ENTIDADE extends Model<ID>, ID extends Serializable, REPOSITORIO extends RepositorioGenerico<ENTIDADE, ID>> {
+public abstract class ServiceGenerico<ENTIDADE extends Model<ID>, ID extends Serializable, REPOSITORIO extends RepositorioGenerico<ENTIDADE, ID>> {
 
-	protected static final Logger log = LoggerFactory.getLogger(ServiceGeneric.class);
+	protected static final Logger log = LoggerFactory.getLogger(ServiceGenerico.class);
 
 	@Autowired
 	private MessageSource messageSource;

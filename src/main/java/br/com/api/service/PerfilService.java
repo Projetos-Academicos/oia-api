@@ -7,7 +7,7 @@ import br.com.api.model.Perfil;
 import br.com.api.repository.PerfilRepository;
 
 @Service
-public class PerfilService extends ServiceGeneric<Perfil, Long, PerfilRepository>{
+public class PerfilService extends ServiceGenerico<Perfil, Long, PerfilRepository>{
 
 	@Autowired
 	private PerfilRepository perfilRepository;
