@@ -64,9 +64,13 @@ public class UsuarioService extends ServiceGenerico<Usuario, Long, UsuarioReposi
 	@Override
 	public void validarUnicidade(Usuario model) throws ExceptionGeral {
 		Long count = this.countByLogin(model.getLogin());
-		if(count > 0 && model.getId() != null) {
-			Usuario usuarioAux = this.consultaSimplesPorId(model.getId());
-			if(!usuarioAux.getId().equals(model.getId())) {
+		if(count > 0) {
+			if(model.getId() != null) {
+				Usuario usuarioAux = this.consultaSimplesPorId(model.getId());
+				if(!usuarioAux.getId().equals(model.getId())) {
+					throw new ExceptionGeral(this.getMensagem(ConstantesMessage.ERRO_UNICIDADE_LOGIN_USUARIO));
+				}
+			}else {
 				throw new ExceptionGeral(this.getMensagem(ConstantesMessage.ERRO_UNICIDADE_LOGIN_USUARIO));
 			}
 		}
